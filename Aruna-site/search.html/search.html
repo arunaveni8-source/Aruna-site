@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6ff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .search-box {
+            margin-top: 20px;
+        }
+
+        input {
+            width: 300px;
+            padding: 10px;
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        .results {
+            margin-top: 30px;
+        }
+
+        .item {
+            background: white;
+            padding: 10px;
+            margin: 10px auto;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Search Your Content</h1>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Type here...">
+        <button onclick="search()">Search</button>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <script>
+        const data = [
+            "Education",
+            "Healthcare",
+            "AI Learning",
+            "Technology",
+            "Science"
+        ];
+
+        function search() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            let filtered = data.filter(item => 
+                item.toLowerCase().includes(input)
+            );
+
+            if (filtered.length === 0) {
+                resultsDiv.innerHTML = "<p>No results found</p>";
+                return;
+            }
+
+            filtered.forEach(item => {
+                let div = document.createElement("div");
+                div.className = "item";
+                div.innerText = item;
+                resultsDiv.appendChild(div);
+            });
+        }
+    </script>
+
+</body>
+</html>

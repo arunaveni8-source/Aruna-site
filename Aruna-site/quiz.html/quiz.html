@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Quiz | NeuroVerse AI</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#050505;
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:50px;
+    background:linear-gradient(135deg,#120024,#001f2e);
+}
+
+h1{
+    color:#00d4ff;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:auto;
+    padding:30px;
+}
+
+.question{
+    background:#111;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+button{
+    background:#00d4ff;
+    color:black;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#result{
+    margin-top:20px;
+    font-size:22px;
+    color:#00d4ff;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#00d4ff;
+    color:black;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>AI Knowledge Quiz</h1>
+    <p>Test Your Artificial Intelligence Knowledge</p>
+</header>
+
+<div class="container">
+
+<div class="question">
+<p>1. What does AI stand for?</p>
+<input type="radio" name="q1" value="1"> Artificial Intelligence<br>
+<input type="radio" name="q1" value="0"> Automatic Internet<br>
+<input type="radio" name="q1" value="0"> Advanced Information
+</div>
+
+<div class="question">
+<p>2. Which language is most used in AI?</p>
+<input type="radio" name="q2" value="1"> Python<br>
+<input type="radio" name="q2" value="0"> HTML<br>
+<input type="radio" name="q2" value="0"> CSS
+</div>
+
+<div class="question">
+<p>3. Machine Learning learns from?</p>
+<input type="radio" name="q3" value="1"> Data<br>
+<input type="radio" name="q3" value="0"> Paper<br>
+<input type="radio" name="q3" value="0"> Books
+</div>
+
+<div class="question">
+<p>4. Deep Learning uses?</p>
+<input type="radio" name="q4" value="1"> Neural Networks<br>
+<input type="radio" name="q4" value="0"> Typewriters<br>
+<input type="radio" name="q4" value="0"> Newspapers
+</div>
+
+<div class="question">
+<p>5. Which is an AI chatbot?</p>
+<input type="radio" name="q5" value="1"> ChatGPT<br>
+<input type="radio" name="q5" value="0"> Calculator<br>
+<input type="radio" name="q5" value="0"> Paint
+</div>
+
+<button onclick="calculateScore()">Submit Quiz</button>
+
+<div id="result"></div>
+
+<a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+</div>
+
+<script>
+function calculateScore(){
+
+let score = 0;
+
+let answers = document.querySelectorAll('input[type="radio"]:checked');
+
+answers.forEach(answer=>{
+score += parseInt(answer.value);
+});
+
+let level = "";
+
+if(score <= 2){
+level = "Beginner";
+}
+else if(score <= 4){
+level = "Intermediate";
+}
+else{
+level = "AI Expert";
+}
+
+document.getElementById("result").innerHTML =
+"Your Score: " + score + "/5 <br> Level: " + level;
+}
+</script>
+
+</body>
+</html>
